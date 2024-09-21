@@ -2,6 +2,8 @@ package com.rutuja.department.service;
 
 import com.rutuja.department.model.DepartmentModel;
 import com.rutuja.department.repo.DepartmentRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,12 +12,14 @@ import java.util.List;
 
 @Service
 public class DepartMentService {
+    Logger log= LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private DepartmentRepository departmentRepository;
 
     public DepartmentModel getDepartMentById(Integer depatId) throws Exception {
         if(departmentRepository.findById(depatId).isPresent()){
+            log.debug("Id is present in Db");
             return   departmentRepository.findById(depatId).get();
         }
         throw new Exception("Department not found");
