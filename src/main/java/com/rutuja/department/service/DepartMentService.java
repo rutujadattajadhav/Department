@@ -32,7 +32,7 @@ public class DepartMentService {
             departments.forEach((deparment)->{
                 listOfDepartment.add(deparment);
             });
-            return listOfDepartment;
+             return listOfDepartment;
         }
         throw new Exception("department not found");
     }
